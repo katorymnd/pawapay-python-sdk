@@ -1,0 +1,176 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "katorymnd-pawapay-python-sdk"
+version = "2.1.1"
+description = "Official Premium Python SDK by Katorymnd Web Solutions for PawaPay mobile money API integration with dual-stack V1 and V2 support."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "LicenseRef-Proprietary"
+authors = [
+  {name = "Katorymnd Web Solutions", email = "support@katorymnd.com"},
+  {name = "Kato Raymond", email = "katorymnd@gmail.com"}
+]
+maintainers = [
+  {name = "Kato Raymond", email = "support@katorymnd.com"}
+]
+keywords = [
+  "katorymnd", "pawapay", "mobile-money", "payments", "africa", "fintech", "sdk", "python", "premium", "api", "v1", "v2"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Financial and Insurance Industry",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Office/Business :: Financial",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+    "aiohttp>=3.9.0",
+    "httpx>=0.27.0",
+    "requests>=2.28.0",
+    "cryptography>=42.0.0",
+    "certifi>=2023.11.17",
+    "pydantic>=2.0.0",
+    "jmespath>=1.0.1",
+    "python-dotenv>=1.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]",
+    "jinja2",
+    "python-multipart"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.12.0",
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+]
+playground = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.24.0",
+    "jinja2>=3.1.2",
+    "python-multipart>=0.0.6",
+]
+
+[project.urls]
+Homepage = "https://katorymnd.com/pawapay-payment-sdk/python"
+Documentation = "https://katorymnd.com/pawapay-payment-sdk/python/docs"
+Repository = "https://github.com/katorymnd/pawapay-python-sdk.git"
+Issues = "https://github.com/katorymnd/pawapay-python-sdk/issues"
+Changelog = "https://github.com/katorymnd/pawapay-python-sdk/releases"
+Support = "https://katorymnd.com/support"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "direct*"] 
+namespaces = false
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.bin", "*.html", "*.css", "*.js", "*.so", "*.pyd", "*.dylib"]
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+    "bytecode.bin", 
+    "opcodes.json", 
+    ".pawapay-imprint", 
+    ".pawapay-session",
+    "*.log",
+    ".coverage",
+    "htmlcov",
+    "test.txt",
+    "clean_sdk.py",
+    "build_local.py",
+    "setup_sdk.py",
+    "*2.py"
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.eggs | \.git | \.hg | \.mypy_cache | \.tox | \.venv | _build | buck-out | build | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_any_generics = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = "-v"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/setup.py",
+    "*/conftest.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\bProtocol\b",
+    "@(abc\\.)?abstractmethod",
+]
+
+[project.scripts]
+katorymnd-pawapay-setup = "src.setup_cli:run_setup"

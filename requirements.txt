@@ -1,0 +1,31 @@
+﻿# Core HTTP & Async
+aiohttp>=3.9.0
+httpx>=0.27.0
+requests>=2.28.0
+
+# Cryptography & Security
+cryptography>=42.0.0
+certifi>=2023.11.17
+
+# Web Framework (if needed for testing/servers)
+fastapi>=0.100.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+
+# Data Validation & Serialization
+pydantic>=2.0.0
+jmespath>=1.0.1
+
+# Templating & Configuration
+jinja2>=3.1.2
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Development & Utilities
+black>=23.0.0
+mypy>=1.0.0
+flake8>=6.0.0
+isort>=5.12.0

@@ -49,3 +49,56 @@ htmlcov/
 # Ignore Rust build artifacts
 core-rust/target/
 target/core-rust/
+
+# Additional files to ignore
+test.txt
+clean_sdk.py
+build_local.py
+.pawapay-session
+.pawapay-imprint
+.env
+venv/
+
+# VM specific files
+src/utils/vm/opcodes.json
+src/utils/vm/interpreter2.py
+src/utils/vm/degradation_manager2.py
+src/utils/vm/bytecode.bin
+src/utils/vm/bytecode_encoder2.py
+example/app.py
+example/templates/deposit_payment_page.html
+example/templates/deposit_wizard.html
+example/templates/home.html
+example/templates/partials/footer.html
+example/templates/partials/header.html
+example/templates/partials/nav.html
+example/templates/refund.html
+example/templates/save_config.html
+example/templates/withdraw.html
+data/
+errorlogs.txt
+
+# License specific files
+src/utils/license/validator2.py
+src/utils/license/server_check2.py
+src/utils/license/protection2.py
+src/utils/license/integrity2.py
+
+# Config files
+src/config/Config2.py
+
+# API files
+src/api/ApiClient2.py
+
+# Example directory files
+example/.pawapay-imprint
+example/direct/
+
+#setup old
+setup_sdk.py
+
+# Core Rust directory
+core-rust/
+
+# GitHub directory
+.github/

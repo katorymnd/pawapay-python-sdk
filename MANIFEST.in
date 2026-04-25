@@ -1,0 +1,28 @@
+# Include all compiled Native Vaults
+recursive-include src/core *.so *.pyd *.dylib
+
+# Include documentation
+include README.md
+include LICENSE
+
+# EXCLUDE duplicate/backup Python files
+global-exclude *2.py
+
+# Exclude runtime generated data files
+exclude src/utils/vm/bytecode.bin
+exclude src/utils/vm/opcodes.json
+exclude .pawapay-imprint
+exclude .pawapay-session
+
+# Exclude root scripts
+exclude test.txt
+exclude clean_sdk.py
+exclude build_local.py
+exclude setup_sdk.py
+
+# Prune non-package directories
+prune core-rust
+prune .github
+prune example
+prune logs
+prune htmlcov
